@@ -1,0 +1,53 @@
+<!-- Developed by Niloy Sikdar -->
+
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111A2B">
+    <meta name="msapplication-navbutton-color" content="#111121">
+    <link rel="icon" href="./assets/images/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Box SERO Game</title>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="scene"></div>
+    <h2>0</h2>
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+        <h1 class="loading-text">يتم التحميل ...</h1>
+    </div>
+
+    <div class="score-page">
+        <div class="score-card">
+            <p class="score-text">Score</p>
+            <h1 class="score-value">0</h1>
+            <button class="play-again">لعب مرة اخرى!</button>
+        </div>
+    </div>
+
+    <div class="welcome">
+        <div id="particles-js1"></div>
+        <div class="game-name">
+            <h1 class="original-name">Box SERO Game</h1>
+            <p class="tag">لا تفقد صندوقك</p>
+        </div>
+        <p class="description">انقر/اضغط على الشاشة لالتقاط الصناديق</p>
+        <button class="try-now">العب الان</button>
+        <p class="developed">Developed by ＭＡＨＤＩ </p>
+    </div>
+
+    <audio src="sound.mp3" autoplay="false" loop></audio>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
+    <script src="particle.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
