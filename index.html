@@ -1,53 +1,480 @@
-<!-- Developed by Niloy Sikdar -->
-
 <!DOCTYPE html>
-<html lang="ar">
-
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#111A2B">
-    <meta name="msapplication-navbutton-color" content="#111121">
-    <link rel="icon" href="./assets/images/icon.png">
-    <link rel="stylesheet" href="style.css">
-    <title>Box SERO Game</title>
+    <title>دفع النجوم - اشتراك VIP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .offer-box {
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            color: white;
+            text-align: center;
+        }
+        
+        .offer-box h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .offer-box .price {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .offer-box .stars {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .features h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .features ul {
+            list-style: none;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .payment-methods {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .payment-methods h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #0088cc;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .telegram-btn:hover {
+            background: #006699;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,136,204,0.3);
+        }
+        
+        .telegram-btn img {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+        }
+        
+        .code-section {
+            background: #e3f2fd;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .code-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .code-display {
+            background: white;
+            border: 2px dashed #0088cc;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+        
+        .copy-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #3d8b40;
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #856404;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            padding: 10px;
+        }
+        
+        .step-number {
+            background: #0088cc;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .offer-box .price {
+                font-size: 36px;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 15px;
+            }
+        }
+        
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0088cc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-
 <body>
-    <div id="particles-js"></div>
-
-    <div class="scene"></div>
-    <h2>0</h2>
-
-    <div class="loader-wrapper">
-        <span class="loader"><span class="loader-inner"></span></span>
-        <h1 class="loading-text">يتم التحميل ...</h1>
-    </div>
-
-    <div class="score-page">
-        <div class="score-card">
-            <p class="score-text">Score</p>
-            <h1 class="score-value">0</h1>
-            <button class="play-again">لعب مرة اخرى!</button>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 اشتراك VIP بالنجوم</h1>
+            <p>احصل على اشتراك VIP لمدة شهر واحد</p>
+        </div>
+        
+        <div class="content">
+            <div class="offer-box">
+                <h2>عرض شهر واحد</h2>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="price">50 نجمة</div>
+                <p>اشتراك VIP كامل لمدة 30 يوم</p>
+            </div>
+            
+            <div class="features">
+                <h3>🎯 المميزات:</h3>
+                <ul>
+                    <li>نشر تلقائي في المجموعات</li>
+                    <li>3 كلايش مختلفة قابلة للتعديل</li>
+                    <li>توقيت قابل للتخصيص</li>
+                    <li>دعم فني متكامل</li>
+                    <li>إشعارات عند انتهاء الاشتراك</li>
+                </ul>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">اضغط زر الدفع</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">ادفع 50 نجمة</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">احصل على الكود</div>
+                </div>
+            </div>
+            
+            <div class="payment-methods">
+                <h3>💳 طريقة الدفع:</h3>
+                
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                    <p>جاري معالجة الدفع...</p>
+                </div>
+                
+                <button class="telegram-btn" onclick="processPayment()" id="payBtn">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJTMiA3MiAxNy41MiAyMlYxMkgxNlYxMS41SDIwVjIwSDIwLjVWNi41SDExLjVWN0gxMlYyWiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=" alt="Telegram">
+                    دفع 50 نجمة عبر تليجرام
+                </button>
+                
+                <div class="info-box">
+                    <strong>ملاحظة:</strong> بعد الدفع، ستحصل على كود فريد. خذ لقطة شاشة للحفظ.
+                </div>
+            </div>
+            
+            <div class="code-section" id="codeSection">
+                <h3>🎉 تم الدفع بنجاح!</h3>
+                <p>الكود الخاص بك:</p>
+                <div class="code-display" id="codeDisplay">جاري التوليد...</div>
+                <button class="copy-btn" onclick="copyCode()">نسخ الكود</button>
+                <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                    أرسل هذا الكود للبوت @autoPost_bot
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 بوت النشر التلقائي. جميع الحقوق محفوظة.</p>
+            <p>للتواصل: @I_e_e_l</p>
         </div>
     </div>
 
-    <div class="welcome">
-        <div id="particles-js1"></div>
-        <div class="game-name">
-            <h1 class="original-name">Box SERO Game</h1>
-            <p class="tag">لا تفقد صندوقك</p>
-        </div>
-        <p class="description">انقر/اضغط على الشاشة لالتقاط الصناديق</p>
-        <button class="try-now">العب الان</button>
-        <p class="developed">سورس العقرب</p>
-    </div>
-
-    <audio src="sound.mp3" autoplay="false" loop></audio>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
-    <script src="particle.js"></script>
-    <script src="app.js"></script>
+    <script>
+        // قائمة أكواد جاهزة (في الواقع يجب أن تأتي من الخادم)
+        const availableCodes = [
+            "AB3D9F7C", "C8E4A2B1", "D5F9B3C2", "E7A4C8D9", 
+            "F2B5D6E8", "G6C9E7F3", "H8D2F5G9", "J4E6G8H2",
+            "K9F3H5J7", "L5G7J2K4", "M2H9K3L6", "N6J4L7M3",
+            "P3K5M8N9", "Q7L2N5P1", "R4M6P9Q2", "S8N3Q6R5",
+            "T5P2R8S9", "U9Q5S3T7", "V6R7T2U4", "W3S8U5V9"
+        ];
+        
+        let usedCodes = JSON.parse(localStorage.getItem('usedCodes') || '[]');
+        
+        function generateCode() {
+            // توليد كود عشوائي من 8 أحرف
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let code = '';
+            for (let i = 0; i < 8; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        function getAvailableCode() {
+            // البحث عن كود غير مستخدم
+            for (let code of availableCodes) {
+                if (!usedCodes.includes(code)) {
+                    usedCodes.push(code);
+                    localStorage.setItem('usedCodes', JSON.stringify(usedCodes));
+                    return code;
+                }
+            }
+            // إذا نفذت الأكواد، نولد كود جديد
+            return generateCode();
+        }
+        
+        function processPayment() {
+            const payBtn = document.getElementById('payBtn');
+            const loader = document.getElementById('loader');
+            const codeSection = document.getElementById('codeSection');
+            const codeDisplay = document.getElementById('codeDisplay');
+            
+            // إخفاء زر الدفع وإظهار المحمل
+            payBtn.style.display = 'none';
+            loader.style.display = 'block';
+            
+            // محاكاة عملية الدفع (3 ثواني)
+            setTimeout(() => {
+                // إخفاء المحمل
+                loader.style.display = 'none';
+                
+                // الحصول على كود جديد
+                const newCode = getAvailableCode();
+                
+                // عرض الكود
+                codeDisplay.textContent = newCode;
+                codeSection.classList.add('active');
+                
+                // حفظ الكود في localStorage
+                saveCodeToHistory(newCode);
+                
+                // إظهار رسالة نجاح
+                showNotification('تم الدفع بنجاح! تم توليد الكود.');
+                
+                // إرسال إشعار (في الواقع هذا يحدث في الخادم)
+                simulateServerNotification(newCode);
+                
+            }, 3000);
+        }
+        
+        function copyCode() {
+            const code = document.getElementById('codeDisplay').textContent;
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    alert('✓ تم نسخ الكود: ' + code);
+                })
+                .catch(err => {
+                    alert('حدث خطأ في النسخ. يرجى نسخ الكود يدوياً.');
+                });
+        }
+        
+        function saveCodeToHistory(code) {
+            let history = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+            const payment = {
+                code: code,
+                date: new Date().toLocaleString('ar-SA'),
+                amount: 50,
+                status: 'مكتمل'
+            };
+            history.unshift(payment);
+            localStorage.setItem('paymentHistory', JSON.stringify(history));
+        }
+        
+        function simulateServerNotification(code) {
+            // في الواقع، هنا يتم إرسال طلب إلى الخادم
+            console.log('تم الدفع - الكود:', code);
+            console.log('يجب إرسال إشعار للمطور');
+        }
+        
+        function showNotification(message) {
+            // يمكنك استخدام مكتبة للإشعارات
+            alert(message);
+        }
+        
+        // إظهار تاريخ المدفوعات إذا كان موجوداً
+        window.onload = function() {
+            const history = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+            if (history.length > 0) {
+                console.log('تاريخ المدفوعات:', history);
+            }
+        };
+    </script>
 </body>
-
 </html>
